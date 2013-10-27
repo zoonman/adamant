@@ -1,4 +1,9 @@
 <?php
+// Common functions 
+require_once('library/error.php');
+require_once('library/common.php');
+
+
 
 // class loading
 function __autoload($className) {
@@ -7,7 +12,7 @@ function __autoload($className) {
 		include_once($classPath);
 	}
 	else {
-		throw new MissingException(_("Unable to load")." $classPath.");
+		throw new Exception(_("Unable to load")." $classPath.");
 	}
 }
 
