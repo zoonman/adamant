@@ -7,6 +7,7 @@
  * @package defaultPackage
  */
 
+define("ADAMANT",1); // contains Adamant system version
 if (!file_exists('adamant/config.php')) {
 	require_once('adamant/setup.php');
 }

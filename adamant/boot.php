@@ -4,10 +4,10 @@ require_once('library/error.php');
 require_once('library/common.php');
 
 
-
+include_once('config.php');
 // class loading
 function __autoload($className) {
-	$classPath = 'library/'.strtolower($className).'.php';
+	$classPath = 'adamant/library/'.strtolower(str_replace("\\","/",$className)).'.php';
 	if(file_exists($classPath)) {
 		include_once($classPath);
 	}
@@ -16,6 +16,6 @@ function __autoload($className) {
 	}
 }
 
-$db = new DB();
+$db = new DB(DB_NAME,DB_HOST, DB_USER,DB_PASS);
 
 ?>
