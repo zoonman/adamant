@@ -18,4 +18,8 @@ function __autoload($className) {
 
 $db = new DB(DB_NAME,DB_HOST, DB_USER,DB_PASS);
 
+
+$dispather = new Dispatcher($db);
+$dispather->run();
+
 ?>
