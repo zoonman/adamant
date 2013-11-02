@@ -1,9 +1,5 @@
-{include file="chunk/header.tpl"}
+{include file="chunk/head.tpl"}
 
-	
-	
-	
-		{include file="`$module`/`$template_version``$main`.tpl"}
+	{* include file="`$module`/`$template_version``$main`.tpl" *}
 		
-	
-{include file="chunk/footer.tpl"}
+{include file="chunk/foot.tpl"}
