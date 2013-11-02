@@ -3,8 +3,9 @@
 /**
  * Adamant Core
  *
- * @author zoonman
- * @package defaultPackage
+ * @author Philipp Tkachev <zoonman at gmail dot com>
+ * @package Adamant
+ * @version 1
  */
 
 define("ADAMANT",1); // contains Adamant system version
