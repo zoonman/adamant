@@ -8,10 +8,11 @@ include_once('config.php');
 // class loading
 function __autoload($className) {
 	$classPath = 'adamant/library/'.strtolower(str_replace("\\","/",$className)).'.php';
-	if(file_exists($classPath)) {
+	
+	try {
 		include_once($classPath);
 	}
-	else {
+	catch (Exception $e) {
 		throw new Exception(_("Unable to load")." $classPath.");
 	}
 }
@@ -19,7 +20,8 @@ function __autoload($className) {
 $db = new DB(DB_NAME,DB_HOST, DB_USER,DB_PASS);
 
 
-$dispather = new Dispatcher($db);
-$dispather->run();
+$dispatcher = new Dispatcher($db);
+$dispatcher->registerAction(array('common/init','index'));
+$dispatcher->run();
 
 ?>
