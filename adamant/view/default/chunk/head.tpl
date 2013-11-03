@@ -5,7 +5,10 @@
 	<title>{$page.title}</title>
 	<meta name="description" content="{$page.description|strip_tags}">
 	<meta name="keywords" content="{$page.keywords|strip_tags}">
-	{combine input=$page.css output='/tmp/combined.css' age=10}
-	{combine input=$page.js output='/tmp/combined.js' age=10}
+	<link rel="stylesheet" href="{combine input=$page.css output='/tmp/combined.css' age=10}">
+	<script type="text/javascript" src="{combine input=$page.js output='/tmp/combined.js' age=10}">
+	</script>
+	
+	
 </head>
 <body>
