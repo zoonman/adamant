@@ -65,7 +65,7 @@ class Dispatcher {
 				$action = array_shift($element);
 				list($className, $methodName, $arguments, $isolated) = $action;
 				include_once('adamant/controller/'.$className.'.php');
-				$obj_ns = "object_".str_replace('/','_',$className);
+				$obj_ns = "c_".str_replace('/','_',$className);
 				$className = ucwords(str_replace('/',' ',$className));
 				$className = str_replace(' ','',$className);
 				if ($isolated) {

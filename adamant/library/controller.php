@@ -6,24 +6,31 @@
  */
 abstract class Controller {
 	protected $db;
+	protected $dispatcher;
 	protected $data = array();
 	protected $template = 'index';
+	
 	function __construct(&$dispatcher) {
 		$this->db = $dispatcher->db;
-		$this->sm = $dispatcher->sm;
+		$this->sm = $dispatcher->sm;	
+		$this->dispatcher = $dispatcher;
 	}
+	
 	public function __set($name, $value) {
   	$this->data[$name] = $value;
   }
+  
   function &__get($name) {
   	if (array_key_exists($name, $this->data)) {
 			return $this->data[$name];
     }
     return null;
   }
+  
   function __isset($name) {
   	return isset($this->data[$name]);
   }
+  
 	protected function fetch() {
 		foreach ($this->data as $name => $value) {
 			$this->sm->assign($name,$value);
