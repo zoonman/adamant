@@ -7,10 +7,18 @@ final class CommonInit extends Controller {
 		$this->page['js'] = array('/adamant/view/default/js/core.js');
 		$this->page['description'] = '';
 		$this->page['keywords'] = '';
-		echo $this->fetch();
+		//echo $this->fetch();
 	}
 	
-	
+	public function route() {
+		$this->qa = array();
+		if (isset($_GET['rqp'])) {
+			$rqpa = explode('/',$_GET['rqp']);
+		}
+	}
+	public function fetch() {
+		echo parent::fetch();
+	}
 }
 
 

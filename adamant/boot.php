@@ -25,6 +25,7 @@ $db = new DB(DB_NAME,DB_HOST, DB_USER,DB_PASS);
 
 $dispatcher = new Dispatcher($db);
 $dispatcher->registerAction(array('common/init','index'),ADAMANT_ACTION_PRIORITY_HIGH,ADAMANT_ACTION_POSITION_FIRST);
+$dispatcher->registerAction(array('common/init','fetch'),ADAMANT_ACTION_PRIORITY_LOW,ADAMANT_ACTION_POSITION_LAST);
 $dispatcher->run();
 
 ?>
