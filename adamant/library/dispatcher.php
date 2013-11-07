@@ -50,15 +50,24 @@ class Dispatcher {
 		}
 	}
 	
+	/**
+	 * Run trough all job
+	 *
+	 */
 	public function run() {
+		
 		foreach ($this->queue as $priority => &$element) {
 			while (count($element) ) {
 				$this->process($element);
 			}
 		}
-		
 	}
 	
+	/**
+	 * Process current job 
+	 *
+	 * @param unknown_type $element
+	 */
 	private function process(&$element) {
 		if(count($element) > 0) {
 			$action = array_shift($element);
@@ -80,6 +89,11 @@ class Dispatcher {
 		}	
 	}
 	
+	/**
+	 * Run only several jobs. Useful in some cases.
+	 *
+	 * @param unknown_type $ticks
+	 */
 	public function tick($ticks=1) {
 		foreach ($this->queue as $priority => &$element) {
 			while (count($element) && $ticks > 0) {
