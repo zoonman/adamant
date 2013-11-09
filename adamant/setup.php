@@ -27,7 +27,7 @@ CONFIG_T;
 
 if (setup_validate_form_data()) {
 	
-	$config_file_content = str_replace(array('{db}','{user}','{pass}'), array($_POST['db'],$_POST['user'],$_POST['pass']), $config_file_template);
+	$config_file_content = str_replace(array('{db}','{host}','{user}','{pass}'), array($_POST['db'],$_POST['host'],$_POST['user'],$_POST['pass']), $config_file_template);
 	if (@file_put_contents('adamant/config.php', $config_file_content) != 0) {
 		echo '<div class="message success">Config installed. <a href="/">Continue</a>.</div>';
 	}
