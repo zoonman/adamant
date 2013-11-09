@@ -14,8 +14,10 @@ define("ADAMANT_ACTION_PRIORITY_LOW",3);
  * @param string $string
  * @return string
  */
-function _($string) {
-	return $string;
+if ( !function_exists('_') ) {
+	function _($string) {
+		return $string;
+	}
 }
 
 /**
