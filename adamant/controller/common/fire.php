@@ -3,6 +3,9 @@
 final class CommonFire extends Controller {
 	public function index() {
 
-		echo 'Fire';
+		$this->my_test = 'fire';
+		
 	}
+	
+	
 }

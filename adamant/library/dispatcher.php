@@ -12,6 +12,8 @@ class Dispatcher {
 	 * @var database connector
 	 */
 	public $db;
+	public $data = array();
+	
 	private $queue = array(ADAMANT_ACTION_PRIORITY_HIGH=>array(),ADAMANT_ACTION_PRIORITY_NORMAL=>array(),ADAMANT_ACTION_PRIORITY_LOW=>array());
 	function __construct($db) {
 		$this->db = $db;

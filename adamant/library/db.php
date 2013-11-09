@@ -3,7 +3,11 @@
 
 
 
-class DB {
+/**
+ * Database 
+ *
+ */
+final class DB {
 	private $_obj;
 	public function __construct($database,$host='localhost', $user=null, $password=null,$new_connection=null,$extra_flags=null) {
 		if (function_exists("mysqli_connect")) {

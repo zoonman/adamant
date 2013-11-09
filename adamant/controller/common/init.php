@@ -1,6 +1,14 @@
 <?php
 
+/**
+ * Common class
+ *
+ */
 final class CommonInit extends Controller {
+	/**
+	 * Default call
+	 *
+	 */
 	public function index() {
 		$this->page = array( 'title' => 'Adamant v'.ADAMANT);
 		$this->page['css'] = array('/adamant/view/default/css/core.css');
@@ -10,28 +18,37 @@ final class CommonInit extends Controller {
 		$this->route();
 	}
 	
-	public function route() {
+	/**
+	 * Provides basic rounting and call controllers
+	 *
+	 */
+	private  function route() {
 		$this->qa = array();
 		if (isset($_GET['rqp'])) {
 			$rqpa = explode('/',$_GET['rqp']);
-			function fltr($s) {return preg_match("/^[a-z0-9_]+$/",$s);}
 			$this->safe_qa = array_filter($rqpa, "fltr");
 			$this->qa = array_filter($rqpa);
 			if (count($this->safe_qa) > 1) {
 				$path = implode('/', array_slice($this->safe_qa,0, count($this->safe_qa)-1));
-				print_r($this->safe_qa);
-				print_r($path);
+				$path_f = implode('/', $this->safe_qa);
 				if (file_exists('adamant/controller/'.$path.'.php')){
 					if ($path != 'common/init') {
 						$this->dispatcher->registerAction(array($path, $this->safe_qa[count($this->safe_qa)-1]));
-								
 					}
-				};
+				}
+				elseif (file_exists('adamant/controller/'.$path_f.'.php')){
+					if ($path_f != 'common/init') {
+						$this->dispatcher->registerAction(array($path_f, 'index'));
+					}
+				}
 			}
-			
 		}
-
 	}
+
+	/**
+	 * Fetch template
+	 *
+	 */
 	public function fetch() {
 		echo parent::fetch();
 	}
