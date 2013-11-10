@@ -1,5 +1,5 @@
 <?php
-
+if(!defined('ADAMANT')) exit(1);
 
 /**
  * Dispatchering calls in the system
@@ -20,7 +20,7 @@ class Dispatcher {
 		include_once('adamant/library/smarty/Smarty.class.php');
 		$this->sm = new Smarty();
 		$this->sm->cache_dir='tmp/cache';
-		$this->sm->template_dir='adamant/view/default';
+		$this->sm->template_dir='adamant/view/default/tpl';
 		$this->sm->compile_dir='tmp/tplc';
 		$this->sm->caching=false;
 		$this->sm->compile_check=true;

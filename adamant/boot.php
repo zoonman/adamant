@@ -1,4 +1,5 @@
 <?php
+if(!defined('ADAMANT')) exit(1);
 // Common functions 
 require_once('library/error.php');
 require_once('library/common.php');

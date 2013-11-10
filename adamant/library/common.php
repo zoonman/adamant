@@ -1,4 +1,5 @@
 <?php
+if(!defined('ADAMANT')) exit(1);
 /**
  * Queue management constants
  * */

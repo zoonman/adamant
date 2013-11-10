@@ -1,5 +1,5 @@
 <?php
-
+if(!defined('ADAMANT')) exit(1);
 /**
  * Common class
  *
