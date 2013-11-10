@@ -57,10 +57,18 @@ class Dispatcher {
 	 *
 	 */
 	public function run() {
+		/*
+		$this->process( $this->queue[ADAMANT_ACTION_PRIORITY_HIGH] );
+		while (count( $this->queue[ADAMANT_ACTION_PRIORITY_NORMAL]) > 0) {
+			$this->process( $this->queue[ADAMANT_ACTION_PRIORITY_NORMAL] );
+		}
 		
+		
+		$this->process( $this->queue[ADAMANT_ACTION_PRIORITY_LOW] );
+		*/
 		foreach ($this->queue as $priority => &$element) {
 			while (count($element) ) {
-				$this->process($element);
+				$this->process($element, $priority);
 			}
 		}
 	}
@@ -70,7 +78,15 @@ class Dispatcher {
 	 *
 	 * @param unknown_type $element
 	 */
-	private function process(&$element) {
+	private function process(&$element, $priority) {
+		
+		if ($priority > ADAMANT_ACTION_PRIORITY_HIGH && !empty($this->queue[ADAMANT_ACTION_PRIORITY_HIGH])) {
+			$this->process($this->queue[ADAMANT_ACTION_PRIORITY_HIGH], ADAMANT_ACTION_PRIORITY_HIGH);
+		}
+		if ($priority > ADAMANT_ACTION_PRIORITY_NORMAL && !empty($this->queue[ADAMANT_ACTION_PRIORITY_NORMAL])) {
+			$this->process($this->queue[ADAMANT_ACTION_PRIORITY_NORMAL], ADAMANT_ACTION_PRIORITY_NORMAL);
+		}
+		
 		if(count($element) > 0) {
 			$action = array_shift($element);
 			list($className, $methodName, $arguments, $isolated) = $action;

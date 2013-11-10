@@ -1,14 +1,18 @@
 {include file="chunk/head.tpl"}
 
-<h1>Adamant</h1>
-<p>This is an example page.</p>
+<div class="central-container">
 
-	{* include file="`$module`/`$template_version``$main`.tpl" *}
+	<h1>Adamant</h1>
+	<p>This is an example page.</p>
+
+	<p>	
+	{if isset($my_test)}
+		{$my_test}
+	{/if}
+	</p>
+</div>
 
 	
-<p>	
-{if isset($my_test)}
-	{$my_test}
-{/if}
-</p>
+	
+
 {include file="chunk/foot.tpl"}

@@ -33,7 +33,7 @@ abstract class Controller {
   
 	public  function fetch() {
 		
-		print_r($this->dispatcher->data);
+		//print_r($this->dispatcher->data);
 		foreach ($this->dispatcher->data as $name => $value) {
 			$this->dispatcher->sm->assign($name,$value);
 		}
