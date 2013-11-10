@@ -26,7 +26,7 @@ final class CommonInit extends Controller {
 		$this->qa = array();
 		if (isset($_GET['rqp'])) {
 			$rqpa = explode('/',$_GET['rqp']);
-			$this->safe_qa = array_filter($rqpa, "fltr");
+			$this->safe_qa = array_filter($rqpa, "filter_safe_path_components");
 			$this->qa = array_filter($rqpa);
 			if (count($this->safe_qa) > 1) {
 				$path = implode('/', array_slice($this->safe_qa,0, count($this->safe_qa)-1));

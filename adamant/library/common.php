@@ -26,7 +26,7 @@ if ( !function_exists('_') ) {
  * @param string $s
  * @return bool
  */
-function fltr($s) {
+function filter_safe_path_components($s) {
 	return preg_match("/^[a-z0-9_]+$/",$s);
 }
 
