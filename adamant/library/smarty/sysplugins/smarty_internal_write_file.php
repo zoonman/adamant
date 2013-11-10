@@ -55,7 +55,7 @@ class Smarty_Internal_Write_File
          */
         if (Smarty::$_IS_WINDOWS) {
             // remove original file
-            @unlink($_filepath);
+            if(file_exists($_filepath)) @unlink($_filepath);
             // rename tmp file
             $success = @rename($_tmp_file, $_filepath);
         } else {
@@ -63,7 +63,7 @@ class Smarty_Internal_Write_File
             $success = @rename($_tmp_file, $_filepath);
             if (!$success) {
                 // remove original file
-                @unlink($_filepath);
+                if(file_exists($_filepath)) @unlink($_filepath);
                 // rename tmp file
                 $success = @rename($_tmp_file, $_filepath);
             }
