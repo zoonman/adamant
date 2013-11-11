@@ -1,6 +1,10 @@
 <?php
 if(!defined('ADAMANT')) exit(1);
 
+/**
+ * This example class demostrates how to interact with different levels of queue
+ *
+ */
 final class CommonFire extends Controller {
 	public function index() {
 
