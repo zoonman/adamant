@@ -57,15 +57,7 @@ class Dispatcher {
 	 *
 	 */
 	public function run() {
-		/*
-		$this->process( $this->queue[ADAMANT_ACTION_PRIORITY_HIGH] );
-		while (count( $this->queue[ADAMANT_ACTION_PRIORITY_NORMAL]) > 0) {
-			$this->process( $this->queue[ADAMANT_ACTION_PRIORITY_NORMAL] );
-		}
-		
-		
-		$this->process( $this->queue[ADAMANT_ACTION_PRIORITY_LOW] );
-		*/
+
 		foreach ($this->queue as $priority => &$element) {
 			while (count($element) ) {
 				$this->process($element, $priority);
