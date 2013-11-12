@@ -23,6 +23,7 @@ define('DB_USER', '{user}');
  *
  */
 define('DB_PASS', '{pass}');
+
 CONFIG_T;
 
 if (setup_validate_form_data()) {
