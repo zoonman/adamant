@@ -29,17 +29,18 @@ class Dispatcher {
 		$this->sm->cache_modified_check=true;
 		$this->sm->error_reporting= E_ALL & ~ E_NOTICE;
 	}
-	
-	/**
-	 * Registering actions
-	 *
-	 * @param unknown_type $action
-	 * @param unknown_type $priority
-	 * ADAMANT_PRIORITY_FIRST
-	 * ADAMANT_PRIORITY_LAST
-	 * ADAMANT_PRIORITY_NORMAL
-	 * ADAMANT_PRIORITY_BEFORE
-	 */
+
+    /**
+     * Registering actions
+     *
+     * @param array|\unknown_type $action
+     * @param int|\unknown_type $priority
+     * ADAMANT_PRIORITY_FIRST
+     * ADAMANT_PRIORITY_LAST
+     * ADAMANT_PRIORITY_NORMAL
+     * ADAMANT_PRIORITY_BEFORE
+     * @param int $position
+     */
 	public function registerAction($action=array(),$priority=ADAMANT_ACTION_PRIORITY_NORMAL, $position=ADAMANT_ACTION_POSITION_LAST){
 		if (!isset($action[1])) $action[1] = 'index'; // default action
 		if (!isset($action[2])) $action[2] = array(); // parameters
@@ -68,7 +69,8 @@ class Dispatcher {
 	/**
 	 * Process current job 
 	 *
-	 * @param unknown_type $element
+	 * @param array $element
+     * @param CONST $priority see library/common.php
 	 */
 	private function process(&$element, $priority) {
 		
@@ -102,14 +104,13 @@ class Dispatcher {
 	/**
 	 * Run only several jobs. Useful in some cases.
 	 *
-	 * @param unknown_type $ticks
+	 * @param int $ticks
 	 */
 	public function tick($ticks=1) {
-		foreach ($this->queue as $priority => &$element) {
-			while (count($element) && $ticks > 0) {
-				$this->process($element);
-				$ticks--;
-			}
-		}
+		while (count($this->queue[ADAMANT_ACTION_PRIORITY_NORMAL]) && $ticks > 0) {
+            $this->process($this->queue[ADAMANT_ACTION_PRIORITY_NORMAL], ADAMANT_ACTION_PRIORITY_NORMAL);
+            $ticks--;
+        }
+
 	}
 }
